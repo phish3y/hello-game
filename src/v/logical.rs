@@ -1,18 +1,21 @@
-use ash::{Device, vk::{DeviceCreateInfo, PhysicalDevice, Queue}, Instance};
+use ash::{vk::{DeviceCreateInfo, PhysicalDevice, Queue}, Device, Instance};
 
-fn create_logical_device(
+fn get_logical_device(
     instance: &Instance,
     physical_device: PhysicalDevice,
-) -> (Device, Queue) {
-    // TODO let indices = VulkanApp::find_queue_family(instance, physical_device);
-
-    let device: ash::Device = unsafe {
+) -> Device {
+    let device: Device = unsafe {
         instance
             .create_device(physical_device, &DeviceCreateInfo::default(), None)
-            .expect("Failed to create logical Device!")
+            .unwrap()
     };
+
+    device
+}
+
+fn get_queue(device: Device) -> Queue {
+    let indices = VulkanApp::find_queue_family(instance, physical_device);
 
     let graphics_queue = unsafe { device.get_device_queue(indices.graphics_family.unwrap(), 0) };
 
-    (device, graphics_queue)
 }
