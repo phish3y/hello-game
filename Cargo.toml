@@ -7,6 +7,7 @@ edition = "2021"
 strip = true
 
 [dependencies]
+bytemuck = { version = "1.16", features = [ "derive" ] }
 cfg-if     = "1"
 env_logger = "0.10"
 log        = "0.4"

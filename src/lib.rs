@@ -5,6 +5,7 @@ use winit::{
     window::{Window, WindowBuilder},
 };
 
+mod buffer;
 mod state;
 
 pub async fn run() {
@@ -46,9 +47,9 @@ pub async fn run() {
                     state.update();
                     match state.render() {
                         Ok(_) => {}
-                        Err(
-                            wgpu::SurfaceError::Lost | wgpu::SurfaceError::Outdated,
-                        ) => state.resize(state.window().inner_size()),
+                        Err(wgpu::SurfaceError::Lost | wgpu::SurfaceError::Outdated) => {
+                            state.resize(state.window().inner_size())
+                        }
                         Err(wgpu::SurfaceError::OutOfMemory | wgpu::SurfaceError::Other) => {
                             log::error!("OutOfMemory");
                             control_flow.exit();

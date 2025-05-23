@@ -1,0 +1,10 @@
+## hello-game
+
+shaders:
+- vertex
+- fragment
+- compute
+
+buffers:
+- vertex
+- index
