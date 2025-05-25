@@ -4,8 +4,8 @@ use winit::{event::WindowEvent, window::Window};
 use crate::buffer;
 
 pub struct State<'a> {
-    window: &'a Window,
     surface: wgpu::Surface<'a>,
+    window: &'a Window,
     config: wgpu::SurfaceConfiguration,
     device: wgpu::Device,
     queue: wgpu::Queue,
