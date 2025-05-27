@@ -7,9 +7,10 @@ edition = "2021"
 strip = true
 
 [dependencies]
-bytemuck = { version = "1.16", features = [ "derive" ] }
+bytemuck   = { version = "1.16", features = [ "derive" ] }
 cfg-if     = "1"
 env_logger = "0.10"
+image      = { version = "0.24", features = [ "jpeg", "png" ] }
 log        = "0.4"
 pollster   = "0.4.0"
 winit      = { version  = "0.29", features = ["android-native-activity"] }
